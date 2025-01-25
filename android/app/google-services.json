@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1022816616395",
+    "project_id": "sharing-memo",
+    "storage_bucket": "sharing-memo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022816616395:android:4787e3acd573c162b9c04e",
+        "android_client_info": {
+          "package_name": "dev.ej.sharing_memo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022816616395-0ru6ukijjo0oa6kj4ud02d6gvv4u8pj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.ej.sharing_memo",
+            "certificate_hash": "9c342cf807dc7e999a58cb670954ccf3c02d8ddb"
+          }
+        },
+        {
+          "client_id": "1022816616395-5mi1p2q62ps5f933t8ffgr9n2p8civ75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj14EOCcOTUphRXA-MPs_1pENEmhnMNC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022816616395-5mi1p2q62ps5f933t8ffgr9n2p8civ75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

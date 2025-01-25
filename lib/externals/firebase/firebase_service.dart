@@ -1,31 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sharing_memo/lib.dart';
+import 'package:sharing_memo/src/domain/services/auth/i_auth_service.dart';
 
-class FirebaseService {
-  FirebaseService();
+class FirebaseService implements IAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User? _user;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  // 📌 [Getter]
-  FirebaseAuth get auth => _auth;
-  User? get user => _user;
+  @override
+  Stream<User?> authStateChanges() => _auth.authStateChanges();
 
-  void init() {
-    _auth.authStateChanges().listen((User? user) {
-      _user = user;
-      log("---> init user: $user");
-    });
-  }
+  @override
+  Future<User?> signInWithGoogle() async {
+    final GoogleSignInAccount? account = await _googleSignIn.signIn();
 
-  Future<GoogleSignInAccount?> signInWithGoogle() async {
-    GoogleSignInAccount? account = await _googleSignIn.signIn();
-
-    /// 로그인 실패 시
-    if (account == null) {
-      return null;
-    }
+    if (account == null) return null;
 
     final GoogleSignInAuthentication authentication =
         await account.authentication;
@@ -38,15 +27,12 @@ class FirebaseService {
     UserCredential credential =
         await _auth.signInWithCredential(googleCredential);
 
-    if (credential.user == null) {
-      return null;
-    }
+    if (credential.user == null) return null;
 
-    _user = credential.user;
-
-    return account;
+    return credential.user;
   }
 
+  @override
   Future<void> signOut() async {
     await _auth.signOut();
     await _googleSignIn.signOut();

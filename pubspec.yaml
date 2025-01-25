@@ -54,6 +54,7 @@ dev_dependencies:
   json_serializable: ^6.9.0
   riverpod_generator: ^2.6.3
   go_router_builder: ^2.7.1
+  source_gen: ^1.5.0
 
 flutter:
   uses-material-design: true
