@@ -5,4 +5,5 @@ abstract class IAuthService {
   Future<User?> signInWithGoogle();
   Future<void> signOut();
   Stream<User?> authStateChanges();
+  User? getCurrentUser();
 }
