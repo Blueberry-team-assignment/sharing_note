@@ -1,12 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sharing_memo/core/configs/const.dart';
 import 'package:sharing_memo/externals/storage/storage_provider.dart';
-import 'package:sharing_memo/lib.dart';
+import 'package:sharing_memo/routers/router.dart';
 import 'package:sharing_memo/src/domain/providers/auth/auth_provider.dart';
-import 'package:sharing_memo/src/presentation/screens/log-in/login_screen.dart';
-import 'package:sharing_memo/src/presentation/screens/memo/memo_home_screen.dart';
 
 class IntroScreen extends ConsumerWidget {
   const IntroScreen({super.key});
@@ -15,42 +13,51 @@ class IntroScreen extends ConsumerWidget {
     final authState = ref.watch(authStateProvider);
     final storageService = ref.read(storageProvider);
     final isUser = storageService.get(key: isUserKey) ?? 0;
-    // return authState.when(
-    //   data: (User? user) {
-    //     // 로그인 여부 확인 후 화면 이동
-    //     if (user == null) {
-    //       return LoginScreen();
-    //     } else {
-    //       return MemoHomeScreen();
-    //     }
-    //   },
-    //   error: (err, _) => Scaffold(
-    //     body: Center(
-    //       child: Text("Error: $err"),
+
+    // if (isUser == 1) {
+    //   return const MemoHomeScreen();
+    // } else {
+    //   return authState.when(
+    //     data: (user) =>
+    //         user == null ? const LoginScreen() : const MemoHomeScreen(),
+    //     loading: () => const Scaffold(
+    //       body: Center(
+    //         child: CircularProgressIndicator(),
+    //       ),
     //     ),
-    //   ),
-    //   loading: () => const Scaffold(
-    //     body: Center(
-    //       child: const CircularProgressIndicator(),
+    //     error: (err, stack) => Scaffold(
+    //       body: Center(
+    //         child: Text("Error: $err"),
+    //       ),
     //     ),
-    //   ),
-    // );
-    if (isUser == 1) {
-      return MemoHomeScreen();
-    } else {
-      return authState.when(
-        data: (user) => user == null ? LoginScreen() : MemoHomeScreen(),
-        loading: () => Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
-        error: (err, stack) => Scaffold(
-          body: Center(
-            child: Text("Error: $err"),
-          ),
-        ),
-      );
-    }
+    //   );
+    // }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final router = GoRouter.of(context);
+
+      if (isUser == 1) {
+        router.go(AppRoute.memoHome); // 바로 메모 홈으로 이동
+      } else {
+        authState.when(
+          data: (user) {
+            if (user == null) {
+              router.go(AppRoute.login);
+            } else {
+              router.go(AppRoute.memoHome);
+            }
+          },
+          loading: () {}, // 로딩 중에는 아무 동작 안 함
+          error: (err, stack) {
+            // router.go(AppRoute.err, extra: err.toString()); // 에러 페이지로 이동
+          },
+        );
+      }
+    });
+
+    // 빈 위젯 반환 (UI는 필요 없음, 라우팅만 수행)
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator()), // 라우팅이 실행되기까지 잠시 표시
+    );
   }
 }

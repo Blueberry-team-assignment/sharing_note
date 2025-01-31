@@ -7,16 +7,16 @@ import 'package:sharing_memo/src/domain/services/auth/i_auth_service.dart';
 
 // 📌 인증 서비스 Provider (FirebaseService 사용)
 final authServiceProvider = Provider<IAuthService>((ref) {
-  final _storageService = ref.read(storageProvider);
-  return FirebaseService(_storageService);
+  final storageService = ref.read(storageProvider);
+  return FirebaseService(storageService);
 });
 
 // 📌 Auth 현재 로그인 상태 확인
 final authStateNotifierProvider =
     StateNotifierProvider<AuthStateNotifier, User?>((ref) {
-  final _authService = ref.watch(authServiceProvider);
-  final _storageService = ref.read(storageProvider);
-  return AuthStateNotifier(_authService, _storageService);
+  final authService = ref.watch(authServiceProvider);
+  final storageService = ref.read(storageProvider);
+  return AuthStateNotifier(authService, storageService);
 });
 
 // 📌 구글 로그인

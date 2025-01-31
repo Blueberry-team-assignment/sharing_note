@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sharing_memo/core/configs/app_navigation_bar_config.dart';
+import 'package:sharing_memo/core/providers/appbar_state_provider.dart';
+import 'package:sharing_memo/core/widgets/app_navigation_bar.dart';
+import 'package:sharing_memo/src/presentation/screens/intro/intro_screen.dart';
+import 'package:sharing_memo/src/presentation/screens/log-in/login_screen.dart';
+import 'package:sharing_memo/src/presentation/screens/memo/memo_home_screen.dart';
+import 'package:sharing_memo/src/presentation/screens/memo/memo_writing_screen.dart';
+import 'package:sharing_memo/src/presentation/screens/settings/user_info_screen.dart';
+
+part 'shell/home_scaffold.dart';
+part 'shell/intro_scaffold.dart';
+part 'shell/detail_scaffold.dart';
+part 'app_routes.dart';
+part 'app_router.dart';
+part 'app_router_provider.dart';
+part 'router.g.dart';

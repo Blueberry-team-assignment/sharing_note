@@ -25,11 +25,16 @@ dependencies:
   flutter_native_splash: ^2.4.3
 
   # 이미지
+  cached_network_image: ^3.4.1
   flutter_svg: ^2.0.16
   lottie: ^3.2.0
 
   # 플러터 토스트
   fluttertoast: ^8.2.8
+
+  # 파일 경로
+  path: ^1.9.0
+  path_provider: ^2.1.4
 
   # 라우터
   go_router: ^14.6.2

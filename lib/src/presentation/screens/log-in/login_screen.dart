@@ -20,11 +20,11 @@ class LoginScreen extends ConsumerWidget {
                 if (newUser != null) {
                   ref.read(loginProvider.notifier).state = newUser;
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => MemoHomeScreen(),
+                    builder: (context) => const MemoHomeScreen(),
                   ));
                 }
               },
-              child: Text("로그인"),
+              child: const Text("로그인"),
             ),
           ),
         ],
