@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sharing_memo/core/configs/const.dart';
-import 'package:sharing_memo/externals/storage/storage_provider.dart';
+import 'package:sharing_memo/src/data/storage/storage_provider.dart';
 import 'package:sharing_memo/routers/router.dart';
-import 'package:sharing_memo/src/domain/providers/auth/auth_provider.dart';
+import 'package:sharing_memo/src/presentation/providers/auth/auth_provider.dart';
 
 class IntroScreen extends ConsumerWidget {
   const IntroScreen({super.key});
@@ -13,25 +13,6 @@ class IntroScreen extends ConsumerWidget {
     final authState = ref.watch(authStateProvider);
     final storageService = ref.read(storageProvider);
     final isUser = storageService.get(key: isUserKey) ?? 0;
-
-    // if (isUser == 1) {
-    //   return const MemoHomeScreen();
-    // } else {
-    //   return authState.when(
-    //     data: (user) =>
-    //         user == null ? const LoginScreen() : const MemoHomeScreen(),
-    //     loading: () => const Scaffold(
-    //       body: Center(
-    //         child: CircularProgressIndicator(),
-    //       ),
-    //     ),
-    //     error: (err, stack) => Scaffold(
-    //       body: Center(
-    //         child: Text("Error: $err"),
-    //       ),
-    //     ),
-    //   );
-    // }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final router = GoRouter.of(context);

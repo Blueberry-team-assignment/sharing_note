@@ -24,6 +24,12 @@ dependencies:
   # 스플래시
   flutter_native_splash: ^2.4.3
 
+  # 스크롤 모션
+  flutter_slidable: ^3.1.2
+
+  # 컬러피커
+  flutter_colorpicker: ^1.1.0
+
   # 이미지
   cached_network_image: ^3.4.1
   flutter_svg: ^2.0.16
@@ -46,6 +52,10 @@ dependencies:
   firebase_auth: ^5.4.0
   firebase_core: ^3.10.0
   google_sign_in: ^6.2.2
+  cloud_firestore: ^5.6.2
+
+  # DB
+  sqflite: ^2.4.1
 
   # UUID
   uuid: ^4.5.1

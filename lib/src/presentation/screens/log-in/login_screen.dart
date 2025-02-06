@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sharing_memo/src/domain/providers/auth/auth_provider.dart';
+import 'package:sharing_memo/src/presentation/providers/auth/auth_provider.dart';
 import 'package:sharing_memo/src/presentation/screens/memo/memo_home_screen.dart';
 
 class LoginScreen extends ConsumerWidget {

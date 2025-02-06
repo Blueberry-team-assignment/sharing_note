@@ -35,7 +35,7 @@ RouteBase get $introShell => StatefulShellRouteData.$route(
     );
 
 extension $IntroShellExtension on IntroShell {
-  static IntroShell _fromState(GoRouterState state) => IntroShell();
+  static IntroShell _fromState(GoRouterState state) => const IntroShell();
 }
 
 extension $IntroRouteExtension on IntroRoute {
@@ -95,7 +95,7 @@ RouteBase get $homeShell => StatefulShellRouteData.$route(
     );
 
 extension $HomeShellExtension on HomeShell {
-  static HomeShell _fromState(GoRouterState state) => HomeShell();
+  static HomeShell _fromState(GoRouterState state) => const HomeShell();
 }
 
 extension $MemoHomeRouteExtension on MemoHomeRoute {
@@ -147,7 +147,7 @@ RouteBase get $detailShell => StatefulShellRouteData.$route(
     );
 
 extension $DetailShellExtension on DetailShell {
-  static DetailShell _fromState(GoRouterState state) => DetailShell();
+  static DetailShell _fromState(GoRouterState state) => const DetailShell();
 }
 
 extension $MemoWritingRouteExtension on MemoWritingRoute {

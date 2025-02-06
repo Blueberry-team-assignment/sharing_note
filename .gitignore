@@ -43,7 +43,7 @@ app.*.map.json
 /android/app/release
 
 # Firebase 관련 모든 파일 및 폴더 무시
-Firebase*
-**/firebase*
-!lib/externals/*
-!lib/externals/firebase/*
+# Firebase*
+# **/firebase*
+# !lib/externals/*
+# !lib/data/firebase/*
