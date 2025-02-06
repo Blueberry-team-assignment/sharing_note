@@ -1,9 +1,16 @@
-import 'package:sharing_memo/src/data/data_source/memo_db_helpder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sharing_memo/src/data/data_source/memo_db_helper.dart';
+
 import 'package:sharing_memo/src/domain/models/memo/memo.dart';
 import 'package:sharing_memo/src/domain/repositories/memo/memo_repository.dart';
 
+final memoRepositoryProvider = Provider<MemoRepository>((ref) {
+  final dbHelper = ref.watch(memoDbHelperProvider);
+  return MemoRepositoryImpl(dbHelper);
+});
+
 class MemoRepositoryImpl implements MemoRepository {
-  final MemoDbHelpder db;
+  final MemoDbHelper db;
   MemoRepositoryImpl(this.db);
   @override
   Future<Memo?> getMemoById(int id) async {

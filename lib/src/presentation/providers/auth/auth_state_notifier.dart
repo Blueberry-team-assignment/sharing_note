@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sharing_memo/core/configs/const.dart';
 import 'package:sharing_memo/src/data/storage/storage_provider.dart';
 import 'package:sharing_memo/src/data/storage/storage_service.dart';
-import 'package:sharing_memo/src/domain/services/auth/i_auth_service.dart';
+import 'package:sharing_memo/src/domain/repositories/auth/i_auth_service.dart';
 import 'package:sharing_memo/src/presentation/providers/auth/auth_provider.dart';
 import 'package:sharing_memo/src/presentation/providers/auth/state/auth_state.dart';
 

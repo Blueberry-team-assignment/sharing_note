@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sharing_memo/core/configs/const.dart';
 import 'package:sharing_memo/src/data/storage/storage_service.dart';
-import 'package:sharing_memo/src/domain/services/auth/i_auth_service.dart';
+import 'package:sharing_memo/src/domain/repositories/auth/i_auth_service.dart';
 
 class FirebaseService implements IAuthService {
   final StorageService _storageService;

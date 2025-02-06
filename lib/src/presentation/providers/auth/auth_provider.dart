@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sharing_memo/src/data/firebase/firebase_service.dart';
 import 'package:sharing_memo/src/data/storage/storage_provider.dart';
-import 'package:sharing_memo/src/domain/services/auth/i_auth_service.dart';
+import 'package:sharing_memo/src/domain/repositories/auth/i_auth_service.dart';
 
 // 📌 인증 서비스 Provider (FirebaseService 사용)
 final authServiceProvider = Provider<IAuthService>((ref) {

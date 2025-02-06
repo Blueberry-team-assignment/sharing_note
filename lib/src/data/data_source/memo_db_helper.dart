@@ -1,11 +1,19 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sharing_memo/src/data/storage/sqlite_service.dart';
 import 'package:sharing_memo/src/domain/models/memo/memo.dart';
 import 'package:sqflite/sqflite.dart';
 
-enum TableName { memo }
+final memoDbHelperProvider = Provider<MemoDbHelper>((ref) {
+  final db = ref.watch(dbProvider).asData?.value;
+  if (db == null) {
+    throw Exception("Database is not initialized");
+  }
+  return MemoDbHelper(db);
+});
 
-class MemoDbHelpder {
+class MemoDbHelper {
   Database db;
-  MemoDbHelpder(this.db);
+  MemoDbHelper(this.db);
 
   // 1. id로 memo 가지고 오는 로직
   Future<Memo?> getMemoById(int id) async {
